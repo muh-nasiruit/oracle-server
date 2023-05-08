@@ -1,3 +1,6 @@
+Mon May 08 2023 00:00:00 GMT+0500 (Pakistan Standard Time),,E:\ORACLE19\FYPCS11\diag\rdbms\orcl1\orcl1\trace\orcl1_vktm_11304.trc
+Mon May 08 2023 00:00:00 GMT+0500 (Pakistan Standard Time),,Please see the VKTM trace file for more details:
+Mon May 08 2023 00:00:00 GMT+0500 (Pakistan Standard Time),,Warning: VKTM detected a forward time drift. 
 Mon May 08 2023 00:00:00 GMT+0500 (Pakistan Standard Time),schema_ddl,TABLE SYS.WRP$_REPORTS_DETAILS: ADDED INTERVAL PARTITION SYS_P1070 (4876) VALUES LESS THAN (TO_DATE(' 2023-05-09 01:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
 Mon May 08 2023 00:00:00 GMT+0500 (Pakistan Standard Time),schema_ddl,TABLE SYS.WRP$_REPORTS: ADDED INTERVAL PARTITION SYS_P1069 (4876) VALUES LESS THAN (TO_DATE(' 2023-05-09 01:00:00', 'SYYYY-MM-DD HH24:MI:SS', 'NLS_CALENDAR=GREGORIAN'))
 Mon May 08 2023 00:00:00 GMT+0500 (Pakistan Standard Time),,E:\ORACLE19\FYPCS11\diag\rdbms\orcl1\orcl1\trace\orcl1_vktm_11304.trc

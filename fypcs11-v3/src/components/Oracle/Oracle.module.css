@@ -1,0 +1,111 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.main-container{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign-up-container{
+    width: 450px;
+    border: 2px solid #8b8b8b;
+    border-radius: 8px;
+}
+.sign-up-title{
+    /* border: 1px solid; */
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sign-up-title img{
+    height: 30px;
+    width: 38px;
+}
+.sign-up-title span{
+    font-size: 24px;
+    font-weight: bolder;
+    margin-left: 7px;
+    font-family: sans-serif;
+}
+.signup-form{
+    display: flex;
+    flex-direction: column;
+}
+.resizing-input-fields{
+    display: flex;
+    flex-direction: column;
+    margin: 10px 0px
+}
+.resizing-input-fields input{
+    width: 370px;
+    margin-left: 42px;
+    height: 26px;
+    border-radius: 6px;
+    border: 1px solid #ada7a7;
+}
+.resizing-input-fields label{
+    margin-left: 42px;
+}
+.checkbox{
+    margin-left: 46px;
+    padding-top: 20px;
+}
+.signup-btn{
+    display: flex;
+    justify-content: center;
+    margin-top: 33px;
+    margin-bottom: 20px;
+}
+.signup-btn input{
+    color: #fff;
+    background-color: rgb(198, 80, 80);
+    height: 35px;
+    border: none;
+    border-radius: 6px;
+    width: 357px;
+}
+.back-to-login{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 31px;
+}
+.back-to-login a{
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.error-message {
+    margin-top: 2px;
+    color: red;
+    font-size: 12px;
+    margin-left: 43px;
+}
+
+.output-card {
+    height:600px;
+    width: 600px;
+    overflow: scroll;
+    margin-left: 50px;
+    margin-top:50px;
+}
+.output-card h2{
+    position: fixed;
+    background-color: white;
+    width: 600px;
+    margin-bottom: 20px;
+
+}
+
+.users-table{
+    height: 700px;
+    width: 1000px;
+    overflow: scroll;
+    margin-left: 10px;
+    border-radius: 2%;
+}
