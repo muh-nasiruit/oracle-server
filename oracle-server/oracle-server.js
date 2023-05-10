@@ -5,7 +5,9 @@ const oracledb = require('oracledb');
 const app = express();
 const http = require("http");
 const fs = require('fs');
-let records;
+const axios = require('axios');
+const moment = require('moment');
+
 const server = http.createServer(app);
 const port = process.env.PORT || 4122;
 
@@ -46,9 +48,9 @@ app.post('/api/oracle-logs', (req, res) => {
   // const {user, password, connectionString} = req.body;
   
   oracledb.getConnection({
-      user: 'fypcs11' ,
-      password: '123' ,
-      connectString: 'localhost:1524/orcl1',
+      user: 'sys' ,
+      password: 'adminadmin8910' ,
+      connectString: 'localhost:1521/orcl2',
       privilege: oracledb.SYSDBA},
 
   (err, connection) => {if (err) {
@@ -58,7 +60,10 @@ app.post('/api/oracle-logs', (req, res) => {
       
       else {
         connection.execute(
-          'SELECT * FROM (SELECT TRUNC(ORIGINATING_TIMESTAMP) , MESSAGE_GROUP, MESSAGE_TEXT FROM v$diag_alert_ext ORDER BY originating_timestamp DESC)',
+          `SELECT * FROM (SELECT TO_CHAR(ORIGINATING_TIMESTAMP, 'DD-MON-YYYY HH24:MI:SS'), MESSAGE_GROUP, MESSAGE_TEXT 
+          FROM v$diag_alert_ext 
+          ORDER BY ORIGINATING_TIMESTAMP DESC)
+          WHERE ROWNUM <= 15`,
           (err, result) => {
             if (err) {
 
@@ -71,9 +76,24 @@ app.post('/api/oracle-logs', (req, res) => {
                 if (err) {
                   console.error(err);
                   res.status(500).send(err);
-                } else {                                
-                  const writeData = result.rows.map(arr => arr.join(',')).join('');
+                } else {
+                  const currentTime = moment().format('MMMM Do YYYY hh:mm:ss a');
+                  const strResult = JSON.stringify(result);                            
+                  axios.post("http://172.104.174.187:4000/api/add-history", 
+                  {
+                    id: 16, 
+                    con_type: "oracle", 
+                    timestamp: currentTime
+                  });
 
+                  axios.post("http://172.104.174.187:4000/api/set/arch-logs", 
+                  { 
+                    user_id: 16,
+                    data_src: "oracle",
+                    log_data: strResult
+                  });
+
+                  const writeData = result.rows.map(arr => arr.join(',')).join('');
                   fs.writeFile('ologs.txt', writeData, (err) => {
                     if (err) throw err;
                     console.log('Data Written')
